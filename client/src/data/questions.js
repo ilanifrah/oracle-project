@@ -1,5 +1,5 @@
 // Bilingual question bank — Hebrew (original) + English (translation)
-// 48 questions across 5 stages, each option maps to one archetype type.
+// 60 questions across 6 stages, each option maps to one archetype type.
 
 export const STAGE_LABELS = {
   he: { 1: 'התחלה', 2: 'הדפוסים שחוזרים', 3: 'חיים אמיתיים', 4: 'בחירה', 5: 'כיוון כסף', 6: 'עומק הדפוס' },
