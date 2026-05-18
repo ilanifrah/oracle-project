@@ -6,7 +6,6 @@ import LanguageSelect from './pages/LanguageSelect.jsx';
 import Landing        from './pages/Landing.jsx';
 import Quiz           from './pages/Quiz.jsx';
 import Results        from './pages/Results.jsx';
-import Payment        from './pages/Payment.jsx';
 import Report         from './pages/Report.jsx';
 
 function AppRoutes() {
@@ -22,7 +21,6 @@ function AppRoutes() {
       <Route path="/"                    element={<Landing />} />
       <Route path="/quiz"                element={<Quiz />} />
       <Route path="/results"             element={<Results />} />
-      <Route path="/payment/:plan"       element={<Payment />} />
       <Route path="/report/:sessionId"   element={<Report />} />
       <Route path="*"                    element={<Navigate to="/" replace />} />
     </Routes>

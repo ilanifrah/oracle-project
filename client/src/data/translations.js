@@ -64,6 +64,7 @@ export const T = {
       'הצעד הראשון המעשי שעליך לעשות',
     ],
     selectPlan: 'בחר תוכנית',
+    generateReport: 'צור את הדוח המלא שלי',
 
     // Payment
     paymentTitle: 'בחר את הדוח שלך',
@@ -159,6 +160,7 @@ export const T = {
       'The first practical step you need to take',
     ],
     selectPlan: 'Select a Plan',
+    generateReport: 'Generate My Full Report',
 
     // Payment
     paymentTitle: 'Choose Your Report',

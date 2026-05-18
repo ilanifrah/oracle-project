@@ -18,18 +18,16 @@ export default function Report() {
   const [report, setReport]   = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError]     = useState(null);
-  const [polling, setPolling] = useState(false);
 
-  const isDev = sessionId === 'dev-preview';
+  const isStateReport = sessionId === 'dev-preview' || sessionId === 'free';
 
   useEffect(() => {
-    // Dev mode: content was passed through router state, no fetch needed
-    if (isDev) {
+    if (isStateReport) {
       const { content, archetypeKey, plan } = location.state || {};
       if (content) {
         setReport({ content, archetype: archetypeKey, plan });
       } else {
-        setError('No report content in state — try the dev bypass again.');
+        setError('No report content. Please go back and generate your report.');
       }
       setLoading(false);
       return;
@@ -43,15 +41,9 @@ export default function Report() {
     setError(null);
     try {
       const res = await fetch(`/api/report/${sessionId}`);
-      if (res.status === 402) {
-        setPolling(true);
-        setTimeout(fetchReport, 3000);
-        return;
-      }
       if (!res.ok) throw new Error(s.reportError);
       const data = await res.json();
       setReport(data);
-      setPolling(false);
     } catch (err) {
       setError(err.message);
     } finally {
@@ -68,7 +60,7 @@ export default function Report() {
 
       <div style={{ position: 'relative', zIndex: 1, maxWidth: 800, margin: '0 auto', padding: '60px 24px 120px' }}>
 
-        {(loading || polling) && (
+        {loading && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -88,7 +80,7 @@ export default function Report() {
         {error && !loading && (
           <div style={{ textAlign: 'center', padding: '80px 0' }}>
             <p style={{ color: '#ef4444', marginBottom: '24px' }}>{error}</p>
-            {!isDev && <Button variant="secondary" onClick={fetchReport}>{s.reportRetry}</Button>}
+            {!isStateReport && <Button variant="secondary" onClick={fetchReport}>{s.reportRetry}</Button>}
           </div>
         )}
 
@@ -98,18 +90,6 @@ export default function Report() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
           >
-            {isDev && (
-              <div style={{
-                textAlign: 'center', marginBottom: '24px',
-                padding: '8px 16px', display: 'inline-block',
-                background: 'rgba(245,158,11,0.08)', border: '1px dashed rgba(245,158,11,0.35)',
-                borderRadius: 'var(--radius-sm)', color: 'var(--gold-500)',
-                fontSize: '0.72rem', letterSpacing: '0.12em',
-              }}>
-                ⚙ DEV PREVIEW — payment bypassed
-              </div>
-            )}
-
             <div style={{ textAlign: 'center', marginBottom: '48px' }}>
               {archetypeData && (
                 <div style={{ fontSize: '3.5rem', marginBottom: '12px' }}>{archetypeData.emoji}</div>
