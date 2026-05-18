@@ -211,6 +211,123 @@ export default function Report() {
               </div>
             </Card>
 
+            {/* Income paths section */}
+            {archetypeData?.onlineIncomePaths && (
+              <motion.div
+                initial={{ opacity: 0, y: 24 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                style={{ marginBottom: '36px' }}
+              >
+                <div style={{
+                  borderRadius: '16px',
+                  border: '1px solid rgba(245,158,11,0.25)',
+                  background: 'linear-gradient(135deg, rgba(245,158,11,0.06) 0%, rgba(139,92,246,0.06) 100%)',
+                  overflow: 'hidden',
+                }}>
+                  {/* Section header */}
+                  <div style={{
+                    padding: '24px 32px 20px',
+                    borderBottom: '1px solid rgba(255,255,255,0.07)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    flexDirection: 'row-reverse',
+                  }}>
+                    <div style={{ textAlign: 'right' }}>
+                      <h2 style={{
+                        fontFamily: 'var(--font-he)',
+                        fontSize: '1.1rem',
+                        fontWeight: 700,
+                        color: 'var(--gold-400)',
+                        margin: 0,
+                        marginBottom: '4px',
+                      }}>
+                        המסלולים המתאימים לך
+                      </h2>
+                      <p style={{ color: 'var(--text-muted)', fontSize: '0.78rem', margin: 0 }}>
+                        מדורגים לפי התאמה לארכיטיפ שלך
+                      </p>
+                    </div>
+                    <span style={{ fontSize: '1.8rem', opacity: 0.7 }}>{archetypeData.emoji}</span>
+                  </div>
+
+                  {/* Path rows */}
+                  <div style={{ padding: '8px 0' }}>
+                    {archetypeData.onlineIncomePaths.map((path, i) => (
+                      <motion.div
+                        key={i}
+                        initial={{ opacity: 0, x: 20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.4, delay: 0.4 + i * 0.07 }}
+                        style={{
+                          display: 'flex',
+                          alignItems: 'flex-start',
+                          gap: '16px',
+                          padding: '16px 32px',
+                          borderBottom: i < archetypeData.onlineIncomePaths.length - 1
+                            ? '1px solid rgba(255,255,255,0.05)'
+                            : 'none',
+                          flexDirection: 'row-reverse',
+                        }}
+                      >
+                        {/* Rank badge */}
+                        <div style={{
+                          minWidth: '28px',
+                          height: '28px',
+                          borderRadius: '50%',
+                          background: i === 0
+                            ? 'linear-gradient(135deg, var(--gold-400), #f59e0b)'
+                            : i === 1
+                              ? 'rgba(245,158,11,0.25)'
+                              : 'rgba(139,92,246,0.2)',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          fontSize: '0.72rem',
+                          fontWeight: 700,
+                          color: i === 0 ? '#1a1a2e' : i === 1 ? 'var(--gold-400)' : 'var(--violet-300)',
+                          flexShrink: 0,
+                          marginTop: '2px',
+                        }}>
+                          {i + 1}
+                        </div>
+
+                        {/* Text block */}
+                        <div style={{ flex: 1, textAlign: 'right' }}>
+                          <div style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '8px',
+                            marginBottom: '6px',
+                            justifyContent: 'flex-end',
+                          }}>
+                            <span style={{
+                              fontFamily: 'var(--font-he)',
+                              fontSize: '0.97rem',
+                              fontWeight: 600,
+                              color: i === 0 ? 'var(--gold-400)' : 'var(--text-primary)',
+                            }}>
+                              {path.name}
+                            </span>
+                            <span style={{ fontSize: '1.1rem' }}>{path.icon}</span>
+                          </div>
+                          <p style={{
+                            color: 'var(--text-secondary)',
+                            fontSize: '0.86rem',
+                            lineHeight: 1.65,
+                            margin: 0,
+                          }}>
+                            {path.why}
+                          </p>
+                        </div>
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+            )}
+
             {/* Actions */}
             <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
               <Button
