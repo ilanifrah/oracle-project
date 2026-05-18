@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(Get-ChildItem -Path \"C:\\\\Users\\\\Yael\\\\Desktop\\\\oracle-project\" -Recurse -Force | ForEach-Object { $_.FullName.Replace\\(\"C:\\\\Users\\\\Yael\\\\Desktop\\\\oracle-project\\\\\", \"\"\\) })",
+      "PowerShell(Get-ChildItem -Path \"C:\\\\Users\\\\Yael\\\\Desktop\\\\ניסוי גירסה ישנה\\\\money os\" -Recurse -Force | ForEach-Object { $_.FullName })",
+      "PowerShell(Get-ChildItem -Recurse -Path \"C:\\\\Users\\\\Yael\\\\Desktop\\\\oracle-project\" -Exclude \"node_modules\",\"dist\",\".git\" | Where-Object { !$_.PSIsContainer } | Select-Object -ExpandProperty FullName | Sort-Object)",
+      "PowerShell(Start-Process notepad \"C:\\\\Users\\\\Yael\\\\Desktop\\\\oracle-project\\\\server\\\\.env\"; Start-Process notepad \"C:\\\\Users\\\\Yael\\\\Desktop\\\\oracle-project\\\\client\\\\.env.local\")",
+      "PowerShell(Get-Process *)",
+      "PowerShell(Get-NetTCPConnection *)",
+      "PowerShell(Start-Process notepad \"C:\\\\Users\\\\Yael\\\\Desktop\\\\oracle-project\\\\server\\\\.env\")",
+      "PowerShell(Get-Content \"C:\\\\Users\\\\Yael\\\\Desktop\\\\oracle-project\\\\server\\\\.env\" -Raw | ForEach-Object { $_ -replace \"`r`n\", \"↵\" -replace \"`n\", \"↵\" })",
+      "PowerShell($body = '{\"archetypeKey\":\"sage\",\"scores\":{\"sage\":12,\"builder\":5,\"creator\":4,\"connector\":3,\"hunter\":2},\"language\":\"en\",\"plan\":\"advanced\"}'; $response = Invoke-RestMethod -Uri \"http://localhost:3001/api/report/dev-generate\" -Method POST -Body $body -ContentType \"application/json\" -TimeoutSec 60; Write-Host \"SUCCESS - content length: $\\($response.content.Length\\) chars\"; Write-Host \"First 300 chars:\"; Write-Host $response.content.Substring\\(0, [Math]::Min\\(300, $response.content.Length\\)\\))",
+      "PowerShell(try { $r = Invoke-RestMethod -Uri \"http://localhost:3001/api/report/dev-generate\" -Method POST -ContentType \"application/json\" -Body '{\"archetypeKey\":\"sage\",\"scores\":{\"sage\":8},\"language\":\"en\"}' -TimeoutSec 30; \"Server OK - content length: $\\($r.content.Length\\)\" } catch { \"Server error: $_\" })",
+      "PowerShell(Start-Sleep -Seconds 2; try { $r = Invoke-RestMethod -Uri \"http://localhost:3001/api/report/dev-generate\" -Method POST -ContentType \"application/json\" -Body '{\"archetypeKey\":\"sage\",\"scores\":{\"sage\":8},\"language\":\"en\"}' -TimeoutSec 45; \"SUCCESS - content length: $\\($r.content.Length\\) chars\"; $r.content.Substring\\(0, [Math]::Min\\(200, $r.content.Length\\)\\) } catch { \"Error: $_\" })",
+      "PowerShell(Test-Path *)",
+      "PowerShell(gh *)",
+      "PowerShell(npm install *)",
+      "PowerShell(winget install *)"
+    ]
+  }
+}
