@@ -26,10 +26,9 @@ router.get('/:sessionId', async (req, res, next) => {
 });
 
 // POST /api/report/free-generate
-// Generates the full premium report for free, saves to DB.
 router.post('/free-generate', async (req, res, next) => {
   try {
-    const { sessionId, archetypeKey, scores, language = 'en', name } = req.body;
+    const { sessionId, archetypeKey, scores, name } = req.body;
 
     if (!archetypeKey) {
       return res.status(400).json({ error: 'archetypeKey is required' });
@@ -37,67 +36,38 @@ router.post('/free-generate', async (req, res, next) => {
 
     const { ARCHETYPES } = await import('../data/archetypes.js');
     const archetype = ARCHETYPES[archetypeKey];
-    if (!archetype) return res.status(400).json({ error: `Unknown archetype: ${archetypeKey}` });
-
-    const content = await generateReport({
-      plan: 'premium',
-      archetype,
-      scores:   scores || {},
-      language,
-      name:     name || null,
-    });
-
-    if (sessionId) {
-      await supabase.from('reports').insert({
-        session_id: sessionId,
-        plan:       'premium',
-        content,
-        paid:       true,
-      }).catch(() => {});
-    }
-
-    res.json({ content, archetypeKey, plan: 'premium' });
-  } catch (err) {
-    next(err);
-  }
-});
-
-// POST /api/report/dev-generate
-// DEV ONLY — no Supabase, no payment. Calls Claude and returns content directly.
-router.post('/dev-generate', async (req, res, next) => {
-  if (process.env.NODE_ENV === 'production') {
-    return res.status(404).json({ error: 'Not found' });
-  }
-
-  try {
-    const { archetypeKey, scores, language = 'en', name, plan = 'advanced' } = req.body;
-
-    if (!archetypeKey) {
-      return res.status(400).json({ error: 'archetypeKey is required' });
-    }
-
-    const { ARCHETYPES } = await import('../data/archetypes.js');
-    const archetype = ARCHETYPES[archetypeKey];
-
     if (!archetype) {
       return res.status(400).json({ error: `Unknown archetype: ${archetypeKey}` });
     }
 
-    console.log(`[dev-generate] archetype=${archetypeKey} plan=${plan} language=${language}`);
+    console.log(`[free-generate] archetype=${archetypeKey} session=${sessionId || 'none'}`);
 
+    // Always generate in Hebrew masculine
     const content = await generateReport({
-      plan,
+      plan:     'premium',
       archetype,
       scores:   scores || {},
-      language,
-      name:     name   || null,
+      language: 'he',
+      name:     name || null,
     });
 
-    console.log(`[dev-generate] report generated (${content.length} chars)`);
+    console.log(`[free-generate] done (${content.length} chars)`);
 
-    res.json({ content, archetypeKey, plan });
+    // Save to DB in background — don't block response
+    if (sessionId) {
+      supabase.from('reports').insert({
+        session_id: sessionId,
+        plan:       'premium',
+        content,
+        paid:       true,
+      }).then(({ error }) => {
+        if (error) console.warn('[free-generate] DB save failed:', error.message);
+      });
+    }
+
+    res.json({ content, archetypeKey, plan: 'premium' });
   } catch (err) {
-    console.error('[dev-generate] error:', err.message);
+    console.error('[free-generate] error:', err.message);
     next(err);
   }
 });

@@ -2,8 +2,8 @@
 // 48 questions across 5 stages, each option maps to one archetype type.
 
 export const STAGE_LABELS = {
-  he: { 1: 'התחלה', 2: 'הדפוסים שחוזרים', 3: 'חיים אמיתיים', 4: 'בחירה', 5: 'כיוון כסף' },
-  en: { 1: 'Opening', 2: 'Repeating Patterns', 3: 'Real Life', 4: 'Choice', 5: 'Money Direction' },
+  he: { 1: 'התחלה', 2: 'הדפוסים שחוזרים', 3: 'חיים אמיתיים', 4: 'בחירה', 5: 'כיוון כסף', 6: 'עומק הדפוס' },
+  en: { 1: 'Opening', 2: 'Repeating Patterns', 3: 'Real Life', 4: 'Choice', 5: 'Money Direction', 6: 'Pattern Depth' },
 };
 
 // Helper — get localized field
@@ -839,16 +839,225 @@ export const questions = [
     ]},
   },
 
-];
 
-// Classification — returns one of 8 archetype keys
+  // ── Stage 6 — עומק הדפוס (Pattern Depth) ──────────────
+  // 12 questions designed to surface combo archetype traits.
+  // Questions 49–52 probe Visionary (sage+hunter) patterns.
+  // Questions 53–56 probe Alchemist (sage+creator) patterns.
+  // Questions 57–60 probe Sovereign (builder+connector) patterns.
+
+  { id: 49, stage: 6,
+    he: { text: 'אתה רואה הזדמנות שעוד לא נסתמה. מה קורה אצלך ראשון?', options: [
+      { label: 'א', text: 'אני מנתח לעומק — מה מניע אותה, מה הסיכון האמיתי, מה ההשלכות.', type: 'sage' },
+      { label: 'ב', text: 'אני מתכנן — בונה תהליך ברור להיכנס בצורה מסודרת.', type: 'builder' },
+      { label: 'ג', text: 'אני מספר את הסיפור שלה — כדי לגרום לאחרים לראות מה אני רואה.', type: 'creator' },
+      { label: 'ד', text: 'אני מוצא מי עוד רואה אותה ובונה שיתוף פעולה מוקדם.', type: 'connector' },
+      { label: 'ה', text: 'אני בודק — שולח הצעה, מקבל תגובה, לומד תוך כדי תנועה.', type: 'hunter' },
+    ]},
+    en: { text: 'You see an opportunity that hasn\'t closed yet. What happens first?', options: [
+      { label: 'A', text: 'I analyze deeply — what\'s driving it, what the real risk is, what the implications are.', type: 'sage' },
+      { label: 'B', text: 'I plan — build a clear process to enter in an organized way.', type: 'builder' },
+      { label: 'C', text: 'I tell its story — to make others see what I already see.', type: 'creator' },
+      { label: 'D', text: 'I find others who see it too and build early collaboration.', type: 'connector' },
+      { label: 'E', text: 'I test — send an offer, get a response, learn while moving.', type: 'hunter' },
+    ]},
+  },
+
+  { id: 50, stage: 6,
+    he: { text: 'מה גורם לך לדעת שהגיע הזמן לנוע?', options: [
+      { label: 'א', text: 'הבנתי מספיק כדי לזוז בצורה מושכלת — התמונה ברורה לי.', type: 'sage' },
+      { label: 'ב', text: 'יש לי תוכנית ותהליך מוגדר — ידעתי מה הצעד הראשון.', type: 'builder' },
+      { label: 'ג', text: 'משהו מרגיש חי ואמיתי ולא עוד גרסה שלישית של אותו רעיון.', type: 'creator' },
+      { label: 'ד', text: 'האנשים הנכונים מתייצבים ויש ביניהם אמון אמיתי.', type: 'connector' },
+      { label: 'ה', text: 'חשתי שהחלון עומד להיסגר ולא הייתי מוכן לפספס.', type: 'hunter' },
+    ]},
+    en: { text: 'What tells you it\'s time to move?', options: [
+      { label: 'A', text: 'I\'ve understood enough to move intelligently — the picture is clear to me.', type: 'sage' },
+      { label: 'B', text: 'I have a defined plan and process — I know what the first step is.', type: 'builder' },
+      { label: 'C', text: 'Something feels alive and real — not another third version of the same idea.', type: 'creator' },
+      { label: 'D', text: 'The right people are showing up and there\'s genuine trust between them.', type: 'connector' },
+      { label: 'E', text: 'I sensed the window was about to close and wasn\'t willing to miss it.', type: 'hunter' },
+    ]},
+  },
+
+  { id: 51, stage: 6,
+    he: { text: 'מה הכישרון הנסתר שהכי קשה לך לתמחר?', options: [
+      { label: 'א', text: 'היכולת לראות מה מאחורי מה — לזהות את הדפוס בתוך הרעש.', type: 'sage' },
+      { label: 'ב', text: 'היכולת לקחת רעיון עמום ולתרגמו למשהו שעובד ואפשר לשחזר.', type: 'builder' },
+      { label: 'ג', text: 'היכולת ליצור חיבור רגשי ובהירות באותו ביטוי — שניהם יחד.', type: 'creator' },
+      { label: 'ד', text: 'היכולת לגרום לאנשים שונים להרגיש שהם שייכים לאותו מקום.', type: 'connector' },
+      { label: 'ה', text: 'היכולת לחוש מתי להיכנס ומתי להישאר בצד — תזמון.', type: 'hunter' },
+    ]},
+    en: { text: 'What hidden talent is hardest for you to put a price on?', options: [
+      { label: 'A', text: 'The ability to see what\'s behind what — to find the pattern inside the noise.', type: 'sage' },
+      { label: 'B', text: 'The ability to take a vague idea and translate it into something that works and repeats.', type: 'builder' },
+      { label: 'C', text: 'The ability to create emotional connection and clarity in the same expression — both at once.', type: 'creator' },
+      { label: 'D', text: 'The ability to make different people feel they belong to the same place.', type: 'connector' },
+      { label: 'E', text: 'The ability to sense when to enter and when to stay back — timing.', type: 'hunter' },
+    ]},
+  },
+
+  { id: 52, stage: 6,
+    he: { text: 'כשאתה בעיצומו של פרויקט, מה מרגש אותך יותר מכל?', options: [
+      { label: 'א', text: 'הרגע שהכל מתחבר לתמונה שלמה — ה"אה!" שמרגיש בלתי ניתן לתכנון.', type: 'sage' },
+      { label: 'ב', text: 'הרגע שהמערכת עובדת לבד בלי שאני צריך לדחוף כל שלב.', type: 'builder' },
+      { label: 'ג', text: 'הרגע שהקהל מגיב — כשמרגיש שמה שיצרתי פגע בדיוק.', type: 'creator' },
+      { label: 'ד', text: 'הרגע שהאנשים בתוך הפרויקט מתחילים לבנות ביניהם בלעדי.', type: 'connector' },
+      { label: 'ה', text: 'הרגע שמישהו אומר "כן" — כשאני יודע שתפסתי את הפתח.', type: 'hunter' },
+    ]},
+    en: { text: 'In the middle of a project, what excites you most?', options: [
+      { label: 'A', text: 'The moment everything connects into a complete picture — the "aha" that can\'t be planned.', type: 'sage' },
+      { label: 'B', text: 'The moment the system runs on its own without me pushing every step.', type: 'builder' },
+      { label: 'C', text: 'The moment the audience responds — when what I made lands exactly right.', type: 'creator' },
+      { label: 'D', text: 'The moment people inside the project start building between themselves, without me.', type: 'connector' },
+      { label: 'E', text: 'The moment someone says "yes" — when I know I caught the opening.', type: 'hunter' },
+    ]},
+  },
+
+  { id: 53, stage: 6,
+    he: { text: 'כשאתה עיבד רעיון לאורך שבועות, מה קורה לו?', options: [
+      { label: 'א', text: 'הוא מתעמק — מוסיפים שכבות, קשרים והבנות שלא היו בהתחלה.', type: 'sage' },
+      { label: 'ב', text: 'הוא מתורגם לתהליך — הופך ממחשבה לדבר שניתן לבנות ולחזור עליו.', type: 'builder' },
+      { label: 'ג', text: 'הוא מקבל קול — צורה, שפה ואופן הצגה שהם שלי לחלוטין.', type: 'creator' },
+      { label: 'ד', text: 'הוא מתחבר לאנשים — אני מבין מי צריך אותו ואיך להגיש אותו.', type: 'connector' },
+      { label: 'ה', text: 'הוא מתחיל להרגיש כבד — אני מעדיף ליישם ולמדוד מאשר להמשיך לעבד.', type: 'hunter' },
+    ]},
+    en: { text: 'When you\'ve been processing an idea for weeks, what happens to it?', options: [
+      { label: 'A', text: 'It deepens — layers, connections, and understandings that weren\'t there at the start.', type: 'sage' },
+      { label: 'B', text: 'It translates — moves from thought to something buildable and repeatable.', type: 'builder' },
+      { label: 'C', text: 'It finds a voice — a form, language, and way of presenting that is entirely mine.', type: 'creator' },
+      { label: 'D', text: 'It connects to people — I understand who needs it and how to present it to them.', type: 'connector' },
+      { label: 'E', text: 'It starts to feel heavy — I\'d rather implement and measure than keep processing.', type: 'hunter' },
+    ]},
+  },
+
+  { id: 54, stage: 6,
+    he: { text: 'מה אתה מייצר שאין לו תחליף אמיתי?', options: [
+      { label: 'א', text: 'מסגרת חשיבה שמארגנת עולם שלם סביב רעיון מרכזי אחד.', type: 'sage' },
+      { label: 'ב', text: 'מערכת שפותרת בעיה אמיתית בצורה שאנשים אחרים לא הצליחו לבנות.', type: 'builder' },
+      { label: 'ג', text: 'ביטוי שנוגע — שאנשים שמרים אותו, חוזרים אליו ומשתפים אותו.', type: 'creator' },
+      { label: 'ד', text: 'מרחב שבו אנשים שלא הכירו מוצאים אמון ושייכות.', type: 'connector' },
+      { label: 'ה', text: 'תנועה מדויקת בזמן הנכון — תוצאה שאחרים לא ציפו לה.', type: 'hunter' },
+    ]},
+    en: { text: 'What do you produce that has no real substitute?', options: [
+      { label: 'A', text: 'A thinking framework that organizes an entire world around one central idea.', type: 'sage' },
+      { label: 'B', text: 'A system that solves a real problem in a way others haven\'t been able to build.', type: 'builder' },
+      { label: 'C', text: 'An expression that touches — that people save, return to, and share.', type: 'creator' },
+      { label: 'D', text: 'A space where people who didn\'t know each other find trust and belonging.', type: 'connector' },
+      { label: 'E', text: 'A precise move at the right time — a result others didn\'t expect.', type: 'hunter' },
+    ]},
+  },
+
+  { id: 55, stage: 6,
+    he: { text: 'מה גורם לך לדעת שעשית עבודה טובה?', options: [
+      { label: 'א', text: 'כשמישהו אמר "לא ידעתי לנסח את זה — ועכשיו יש לי שפה".', type: 'sage' },
+      { label: 'ב', text: 'כשהדבר עובד בלי שאני מדחוף — לבד, שוב ושוב.', type: 'builder' },
+      { label: 'ג', text: 'כשמשהו שיצרתי הגיע לאנשים שלא הכרתי ועשה אותם להרגיש.', type: 'creator' },
+      { label: 'ד', text: 'כשהקשר שבניתי הפך לשיתוף פעולה שחי לעצמו.', type: 'connector' },
+      { label: 'ה', text: 'כשהמספרים מדברים — תפסתי הזדמנות ותרגמתי אותה לתוצאה.', type: 'hunter' },
+    ]},
+    en: { text: 'What makes you know you\'ve done good work?', options: [
+      { label: 'A', text: 'When someone said "I couldn\'t articulate it before — now I have language for it."', type: 'sage' },
+      { label: 'B', text: 'When the thing runs without me pushing — on its own, again and again.', type: 'builder' },
+      { label: 'C', text: 'When something I created reached people I\'d never met and made them feel.', type: 'creator' },
+      { label: 'D', text: 'When the connection I built became a collaboration that lives on its own.', type: 'connector' },
+      { label: 'E', text: 'When the numbers speak — I caught the opportunity and turned it into results.', type: 'hunter' },
+    ]},
+  },
+
+  { id: 56, stage: 6,
+    he: { text: 'מה הנכס הכי חשוב שאתה יכול לבנות?', options: [
+      { label: 'א', text: 'שיטה, מתודולוגיה, או מסגרת שאחרים ירצו לאמץ ולשלם עליה.', type: 'sage' },
+      { label: 'ב', text: 'מוצר, כלי, או תהליך שחוסך זמן ומחיר לאנשים שמשתמשים בו.', type: 'builder' },
+      { label: 'ג', text: 'קטלוג יצירות ובסיס עוקבים שמייצגים את הקול הייחודי שלי.', type: 'creator' },
+      { label: 'ד', text: 'רשת אמון — אנשים שמוציאים זה את זה קדימה ויודעים שהם שייכים.', type: 'connector' },
+      { label: 'ה', text: 'היסטוריית תוצאות שמוכיחה שאני רואה ופועל לפני השוק.', type: 'hunter' },
+    ]},
+    en: { text: 'What\'s the most important asset you could build?', options: [
+      { label: 'A', text: 'A method, methodology, or framework that others will want to adopt and pay for.', type: 'sage' },
+      { label: 'B', text: 'A product, tool, or process that saves time and money for the people who use it.', type: 'builder' },
+      { label: 'C', text: 'A catalog of work and a following that represents my unique voice.', type: 'creator' },
+      { label: 'D', text: 'A trust network — people who move each other forward and know they belong.', type: 'connector' },
+      { label: 'E', text: 'A track record that proves I see and act before the market does.', type: 'hunter' },
+    ]},
+  },
+
+  { id: 57, stage: 6,
+    he: { text: 'מה מרגיש כמו הנחיל האמיתי שלך — הדבר שבאמת שייך לך?', options: [
+      { label: 'א', text: 'ספרייה של ידע ורעיונות שמכווינת אנשים ומפשטת עבורם עולם.', type: 'sage' },
+      { label: 'ב', text: 'מנגנון שמתפקד גם כשאני לא שם — מערכת שמחזיקה את עצמה.', type: 'builder' },
+      { label: 'ג', text: 'קהל שמחפש אותי ספציפית — לא רק את התוכן, אלא אותי.', type: 'creator' },
+      { label: 'ד', text: 'קהילה שסומכת עלי לחבר, לנהל ולהחזיק יחד.', type: 'connector' },
+      { label: 'ה', text: 'ספר כתובות שלא מזדקן — הזדמנויות פתוחות ומגעים חשובים.', type: 'hunter' },
+    ]},
+    en: { text: 'What feels like your real inheritance — the thing that truly belongs to you?', options: [
+      { label: 'A', text: 'A library of knowledge and ideas that guides people and simplifies the world for them.', type: 'sage' },
+      { label: 'B', text: 'A mechanism that functions even when I\'m not there — a system that holds itself.', type: 'builder' },
+      { label: 'C', text: 'An audience that looks for me specifically — not just the content, but me.', type: 'creator' },
+      { label: 'D', text: 'A community that trusts me to connect, manage, and hold together.', type: 'connector' },
+      { label: 'E', text: 'An address book that never ages — open opportunities and important contacts.', type: 'hunter' },
+    ]},
+  },
+
+  { id: 58, stage: 6,
+    he: { text: 'כשאתה בונה משהו, מה השם האמיתי שלו?', options: [
+      { label: 'א', text: 'פלטפורמת ידע שמסדרת את מה שקיים ומציגה אותו בחדות.', type: 'sage' },
+      { label: 'ב', text: 'מנוע — תהליך, מוצר, או מערכת שעושים עבודה לבד.', type: 'builder' },
+      { label: 'ג', text: 'קהל שנבנה סביב הקול שלי — ולא ניתן לשכפל.', type: 'creator' },
+      { label: 'ד', text: 'ארגון חי — מרחב, קהילה, שיתוף פעולה שמתרחש בתוכו.', type: 'connector' },
+      { label: 'ה', text: 'פוזיציה שתפסתי לפני שאחרים ראו אותה.', type: 'hunter' },
+    ]},
+    en: { text: 'When you\'re building something, what\'s its real name?', options: [
+      { label: 'A', text: 'A knowledge platform that organizes what exists and presents it with clarity.', type: 'sage' },
+      { label: 'B', text: 'An engine — a process, product, or system that does the work on its own.', type: 'builder' },
+      { label: 'C', text: 'An audience built around my voice — that can\'t be replicated.', type: 'creator' },
+      { label: 'D', text: 'A living organization — a space, community, collaboration happening inside it.', type: 'connector' },
+      { label: 'E', text: 'A position I captured before others saw it.', type: 'hunter' },
+    ]},
+  },
+
+  { id: 59, stage: 6,
+    he: { text: 'מה תרגיש כשמשהו שבנית ממשיך לגדול בלעדיך?', options: [
+      { label: 'א', text: 'גאווה — הבנה שגיבשתי הפכה לכלי שאחרים מחזיקים.', type: 'sage' },
+      { label: 'ב', text: 'סיפוק — המנוע שבניתי עושה את עבודתו בלי שאצטרך לדחוף.', type: 'builder' },
+      { label: 'ג', text: 'עונג — הקול שלי ממשיך לנגוע בלי שאני נוכח.', type: 'creator' },
+      { label: 'ד', text: 'ריגוש — האנשים שחיברתי ממשיכים לבנות יחד בלעדי.', type: 'connector' },
+      { label: 'ה', text: 'ביטחון — יצאתי בזמן וכבר בדקתי הזדמנות חדשה.', type: 'hunter' },
+    ]},
+    en: { text: 'What will you feel when something you built keeps growing without you?', options: [
+      { label: 'A', text: 'Pride — an understanding I crystallized became a tool others now hold.', type: 'sage' },
+      { label: 'B', text: 'Satisfaction — the engine I built does its work without me needing to push.', type: 'builder' },
+      { label: 'C', text: 'Pleasure — my voice keeps touching people without me being present.', type: 'creator' },
+      { label: 'D', text: 'Excitement — the people I connected keep building together without me.', type: 'connector' },
+      { label: 'E', text: 'Confidence — I exited at the right time and have already tested a new opportunity.', type: 'hunter' },
+    ]},
+  },
+
+  { id: 60, stage: 6,
+    he: { text: 'מה אתה מציע שאחרים לא יכולים לתת?', options: [
+      { label: 'א', text: 'בהירות שמגיעה מהבנה — לא מסיסמאות ולא מניסיון שטחי.', type: 'sage' },
+      { label: 'ב', text: 'מבנה שעובד — לא רק רעיון יפה, אלא מערכת שניתן להפעיל.', type: 'builder' },
+      { label: 'ג', text: 'קול שהוא שלי בלבד — שאי אפשר להעתיק ולא ניתן להחליף.', type: 'creator' },
+      { label: 'ד', text: 'שייכות ואמון — לגרום לאנשים להרגיש בבית בתוך מה שבניתי.', type: 'connector' },
+      { label: 'ה', text: 'עיניים שרואות — הזדמנויות שאחרים עוד לא מזהים.', type: 'hunter' },
+    ]},
+    en: { text: 'What do you offer that others cannot give?', options: [
+      { label: 'A', text: 'Clarity born from understanding — not slogans, not surface-level experience.', type: 'sage' },
+      { label: 'B', text: 'Structure that works — not just a good idea, but a system that can be run.', type: 'creator' },
+      { label: 'C', text: 'A voice that is solely mine — impossible to copy, impossible to replace.', type: 'creator' },
+      { label: 'D', text: 'Belonging and trust — making people feel at home inside what I\'ve built.', type: 'connector' },
+      { label: 'E', text: 'Eyes that see — opportunities others haven\'t identified yet.', type: 'hunter' },
+    ]},
+  },
+
+];
 export function classifyArchetype(scores) {
   const sorted = Object.entries(scores).sort((a, b) => b[1] - a[1]);
   if (!sorted.length) return 'sage';
   const [first, second] = sorted;
   const gap = first[1] - (second?.[1] ?? 0);
 
-  if (gap <= 3 && second?.[0]) {
+  if (gap <= 4 && second?.[0]) {
     const pair = [first[0], second[0]].sort().join('+');
     const combos = {
       'hunter+sage':       'visionary',
