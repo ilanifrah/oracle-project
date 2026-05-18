@@ -15,7 +15,15 @@
       "PowerShell(Test-Path *)",
       "PowerShell(gh *)",
       "PowerShell(npm install *)",
-      "PowerShell(winget install *)"
+      "PowerShell(winget install *)",
+      "PowerShell(gh auth *)",
+      "PowerShell(gh repo *)",
+      "PowerShell(railway init *)",
+      "PowerShell(railway up *)",
+      "PowerShell(railway domain *)",
+      "PowerShell(vercel *)",
+      "PowerShell(railway version *)",
+      "PowerShell(railway *)"
     ]
   }
 }
