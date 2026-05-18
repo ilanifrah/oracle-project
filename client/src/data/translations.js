@@ -14,14 +14,14 @@ export const T = {
 
     // Landing
     heroTitle: 'מה הנתיב הכלכלי שלך?',
-    heroSubtitle: '48 שאלות. 8 ארכיטיפים. תוכנית פעולה אישית.',
+    heroSubtitle: '60 שאלות. 8 ארכיטיפים. תוכנית פעולה אישית.',
     heroCtaPrimary: 'התחל את המבדק',
     heroCtaSecondary: 'למד עוד',
     aboutTitle: 'על Oracle',
     aboutText: 'Oracle הוא מנוע אבחון פסיכולוגי שחושף את הנתיב הייחודי שלך ליצירת הכנסה מקוונת. לא עוד עצות גנריות — רק תובנות שמדויקות לך.',
     plansTitle: 'בחר את העומק שלך',
     howTitle: 'איך זה עובד',
-    howStep1: 'ענה על 48 שאלות',
+    howStep1: 'ענה על 60 שאלות',
     howStep1Sub: 'אמת, מהיר, מעמיק',
     howStep2: 'גלה את הארכיטיפ שלך',
     howStep2Sub: 'מתוך 8 פרופילים ייחודיים',
@@ -110,14 +110,14 @@ export const T = {
 
     // Landing
     heroTitle: 'What is your financial path?',
-    heroSubtitle: '48 questions. 8 archetypes. A personal action plan.',
+    heroSubtitle: '60 questions. 8 archetypes. A personal action plan.',
     heroCtaPrimary: 'Start the Assessment',
     heroCtaSecondary: 'Learn More',
     aboutTitle: 'About Oracle',
     aboutText: 'Oracle is a psychological diagnostic engine that reveals your unique path to generating online income. No more generic advice — only insights that are precise to you.',
     plansTitle: 'Choose Your Depth',
     howTitle: 'How It Works',
-    howStep1: 'Answer 48 questions',
+    howStep1: 'Answer 60 questions',
     howStep1Sub: 'Honest, fast, deep',
     howStep2: 'Discover your archetype',
     howStep2Sub: 'From 8 unique profiles',
