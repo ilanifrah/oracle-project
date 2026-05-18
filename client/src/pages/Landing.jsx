@@ -19,12 +19,6 @@ export default function Landing() {
   const { language } = useLanguage();
   const s = T[language];
 
-  const plans = [
-    { key: 'basic',    name: s.planBasicName,    price: s.planBasicPrice,    desc: s.planBasicDesc,    features: s.planBasicFeatures },
-    { key: 'advanced', name: s.planAdvancedName, price: s.planAdvancedPrice, desc: s.planAdvancedDesc, features: s.planAdvancedFeatures, popular: true },
-    { key: 'premium',  name: s.planPremiumName,  price: s.planPremiumPrice,  desc: s.planPremiumDesc,  features: s.planPremiumFeatures },
-  ];
-
   return (
     <div style={{ position: 'relative', minHeight: '100vh', overflow: 'hidden' }}>
       <div className="bg-animated" />
@@ -133,53 +127,6 @@ export default function Landing() {
                 </motion.div>
               );
             })}
-          </div>
-        </div>
-      </section>
-
-      {/* ── Plans ─────────────────────────────────────────── */}
-      <section id="plans" style={{ padding: '80px 24px', position: 'relative', zIndex: 1 }}>
-        <div className="container">
-          <motion.h2 {...fadeUp()} style={{ textAlign: 'center', fontSize: 'clamp(1.6rem, 4vw, 2.4rem)', marginBottom: '56px' }}>
-            <span className="violet-text">{s.plansTitle}</span>
-          </motion.h2>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '24px', alignItems: 'start' }}>
-            {plans.map((plan, i) => (
-              <motion.div key={plan.key} {...fadeUp(i * 0.15)} style={{ position: 'relative' }}>
-                {plan.popular && (
-                  <div style={{
-                    position: 'absolute', top: -14, left: '50%', transform: 'translateX(-50%)',
-                    background: 'linear-gradient(135deg, var(--gold-500), var(--gold-400))',
-                    color: '#1a0e35', padding: '4px 20px', borderRadius: '20px',
-                    fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.08em', zIndex: 2,
-                  }}>
-                    {s.mostPopular}
-                  </div>
-                )}
-                <Card glow={plan.popular} style={{ padding: '32px 28px', border: plan.popular ? '1px solid rgba(245,158,11,0.4)' : undefined }}>
-                  <div style={{ marginBottom: '24px' }}>
-                    <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '8px' }}>{plan.name}</div>
-                    <div style={{ fontSize: '2.6rem', fontWeight: 700, color: 'var(--gold-400)' }}>{plan.price}</div>
-                    <div style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', marginTop: '6px' }}>{plan.desc}</div>
-                  </div>
-                  <ul style={{ listStyle: 'none', marginBottom: '28px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                    {plan.features.map((f, j) => (
-                      <li key={j} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', fontSize: '0.9rem', color: 'var(--text-secondary)' }}>
-                        <span style={{ color: 'var(--gold-400)', flexShrink: 0 }}>✓</span>
-                        {f}
-                      </li>
-                    ))}
-                  </ul>
-                  <Button
-                    variant={plan.popular ? 'gold' : 'primary'}
-                    fullWidth
-                    onClick={() => navigate('/quiz')}
-                  >
-                    {s.planCta}
-                  </Button>
-                </Card>
-              </motion.div>
-            ))}
           </div>
         </div>
       </section>

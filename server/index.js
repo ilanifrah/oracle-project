@@ -12,6 +12,9 @@ import { errorHandler } from './middleware/errorHandler.js';
 const app  = express();
 const PORT = process.env.PORT || 3001;
 
+// Trust Railway/Vercel proxy so express-rate-limit can read the real client IP
+app.set('trust proxy', 1);
+
 // ── Security ──────────────────────────────────────────────
 app.use(helmet());
 const allowedOrigins = process.env.ALLOWED_ORIGIN
