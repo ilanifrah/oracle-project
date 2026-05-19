@@ -8,6 +8,7 @@ import quizRouter      from './routes/quiz.js';
 import reportRouter    from './routes/report.js';
 import paymentRouter   from './routes/payment.js';
 import analyticsRouter from './routes/analytics.js';
+import diagnosticRouter from './routes/diagnostic.js';
 import { errorHandler } from './middleware/errorHandler.js';
 
 const app  = express();
@@ -44,6 +45,7 @@ app.use('/api/quiz',      quizRouter);
 app.use('/api/report',    reportRouter);
 app.use('/api/payment',   paymentRouter);
 app.use('/api/analytics', analyticsRouter);
+app.use('/api/diagnostic', diagnosticRouter);
 
 app.get('/api/health', (_req, res) => {
   res.json({ status: 'ok', ts: new Date().toISOString() });

@@ -23,7 +23,24 @@
       "PowerShell(railway domain *)",
       "PowerShell(vercel *)",
       "PowerShell(railway version *)",
-      "PowerShell(railway *)"
+      "PowerShell(railway *)",
+      "Bash(Get-ChildItem -Path \"C:\\\\Users\\\\Yael\\\\Desktop\\\\oracle-project\" -Directory)",
+      "Bash(Select-Object Name)",
+      "Bash(Find \"C:\\\\Users\\\\Yael\\\\Desktop\\\\oracle-project\\\\server\" -type f -name \"*.js\")",
+      "Bash(npm install *)",
+      "Bash(node export-questions.mjs)",
+      "Bash(node -e ' *)",
+      "Bash(powershell -Command \"Select-String -Path 'client/src/data/questions.js' -Pattern '{ id:' | Measure-Object | Select-Object -ExpandProperty Count\")",
+      "Bash(powershell -Command \"Select-String -Path 'client/src/data/questions.js' -Pattern 'stage: 6' | Measure-Object | Select-Object -ExpandProperty Count\")",
+      "Bash(npm run *)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)",
+      "Bash(powershell -Command 'Get-ChildItem -Recurse -Include *.js,*.jsx,*.ts,*.tsx,*.html,*.json -Exclude node_modules | Select-String '\\\\''48'\\\\'' | Where-Object { $_.Line -notmatch '\\\\''node_modules'\\\\'' }')",
+      "Bash(powershell -Command \"Get-ChildItem -Path 'client/src' -Recurse -Include *.js,*.jsx | Select-String '48 ש' | Select-Object Filename, LineNumber, Line\")",
+      "Bash(powershell -Command \"Get-ChildItem -Path 'client/public' -Recurse -ErrorAction SilentlyContinue | Select-String '48' | Select-Object Filename, LineNumber, Line; Get-ChildItem -Path 'client' -Include index.html -Recurse | Select-String '48'\")",
+      "Bash(node -e \"import\\('./questions.js'\\).then\\(m => { const ids = m.questions.map\\(q=>q.id\\); console.log\\('Count:', m.questions.length\\); console.log\\('IDs:', ids.join\\(','\\)\\); }\\)\")",
+      "Bash(git commit *)"
     ]
   }
 }

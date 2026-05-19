@@ -35,6 +35,13 @@ export default function Quiz() {
       .catch(err => console.error('Session save failed:', err));
   }, [completed, archetype]);
 
+  // Stamp quiz start time for analytics
+  useEffect(() => {
+    if (!localStorage.getItem('oracle_quiz_start')) {
+      localStorage.setItem('oracle_quiz_start', Date.now().toString());
+    }
+  }, []);
+
   // Lock window scroll for the entire Quiz screen — prevents any body/html scroll
   useEffect(() => {
     const prev = document.body.style.overflow;
