@@ -9,6 +9,47 @@ import ParticleField from '../components/ParticleField.jsx';
 import Button from '../components/ui/Button.jsx';
 import Card from '../components/ui/Card.jsx';
 
+const ANALYTICS_URL = 'https://script.google.com/macros/s/AKfycbxR6Sn-48QKqp-SFrQNEGPHuOTLkjOn429p16crl_DJhYfvCbd2yk2jDvbC9uqdwUQ3jg/exec';
+
+const HE_SCORE_LABELS = {
+  sage: 'החכם', builder: 'הבונה', creator: 'היוצר',
+  connector: 'המחבר', hunter: 'הצייד',
+};
+
+function fireAnalytics({ archetypeKey, scores, language }) {
+  try {
+    const now = new Date();
+    const pad = n => String(n).padStart(2, '0');
+    const date = `${pad(now.getDate())}/${pad(now.getMonth() + 1)}/${now.getFullYear()}`;
+    const time = `${pad(now.getHours())}:${pad(now.getMinutes())}`;
+
+    const startRaw = localStorage.getItem('oracle_quiz_start');
+    const completionMinutes = startRaw
+      ? Math.round((Date.now() - parseInt(startRaw, 10)) / 60000)
+      : null;
+    localStorage.removeItem('oracle_quiz_start');
+
+    const archetypeName = ARCHETYPES[archetypeKey]?.he?.name ?? archetypeKey;
+    const heScores = Object.fromEntries(
+      Object.entries(scores).map(([k, v]) => [HE_SCORE_LABELS[k] ?? k, v])
+    );
+
+    fetch(ANALYTICS_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        date,
+        time,
+        archetype: archetypeName,
+        scores: heScores,
+        language: language === 'he' ? 'עברית' : 'English',
+        completionMinutes,
+      }),
+    }).catch(() => {});
+  } catch (_) {}
+}
+
 const BASE_TYPES = ['sage', 'builder', 'creator', 'connector', 'hunter'];
 
 const COMBO_COMPONENTS = {
@@ -31,6 +72,10 @@ export default function Results() {
   useEffect(() => {
     const t = setTimeout(() => setRevealed(true), 600);
     return () => clearTimeout(t);
+  }, []);
+
+  useEffect(() => {
+    if (archetypeKey) fireAnalytics({ archetypeKey, scores, language });
   }, []);
 
   const archetypeKey  = archetype;
