@@ -10,14 +10,14 @@ import ParticleField from '../components/ParticleField.jsx';
 import Button from '../components/ui/Button.jsx';
 import Card from '../components/ui/Card.jsx';
 
-const ANALYTICS_URL = 'https://script.google.com/macros/s/AKfycbxR6Sn-48QKqp-SFrQNEGPHuOTLkjOn429p16crl_DJhYfvCbd2yk2jDvbC9uqdwUQ3jg/exec';
+const ANALYTICS_URL = '/api/analytics';
 
 const HE_SCORE_LABELS = {
   sage: 'החכם', builder: 'הבונה', creator: 'היוצר',
   connector: 'המחבר', hunter: 'הצייד',
 };
 
-function fireAnalytics({ archetypeKey, scores, language, answers }) {
+function fireAnalytics({ archetypeKey, scores, language, answers, name, email }) {
   try {
     const now = new Date();
     const pad = n => String(n).padStart(2, '0');
@@ -48,11 +48,12 @@ function fireAnalytics({ archetypeKey, scores, language, answers }) {
 
     fetch(ANALYTICS_URL, {
       method: 'POST',
-      mode: 'no-cors',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         date,
         time,
+        name:   name || null,
+        email:  email || null,
         archetype: archetypeName,
         scores: heScores,
         language: language === 'he' ? 'עברית' : 'English',
@@ -75,7 +76,7 @@ export default function Results() {
   const navigate = useNavigate();
   const [params] = useSearchParams();
   const { language } = useLanguage();
-  const { archetype, sessionId, scores, userName, answers } = useQuiz();
+  const { archetype, sessionId, scores, userName, email, answers } = useQuiz();
   const s = T[language];
 
   const [revealed, setRevealed]     = useState(false);
@@ -88,7 +89,7 @@ export default function Results() {
   }, []);
 
   useEffect(() => {
-    if (archetypeKey) fireAnalytics({ archetypeKey, scores, language, answers });
+    if (archetypeKey) fireAnalytics({ archetypeKey, scores, language, answers, name: userName, email });
   }, []);
 
   const archetypeKey  = archetype;

@@ -4,9 +4,10 @@ import cors from 'cors';
 import helmet from 'helmet';
 import rateLimit from 'express-rate-limit';
 
-import quizRouter    from './routes/quiz.js';
-import reportRouter  from './routes/report.js';
-import paymentRouter from './routes/payment.js';
+import quizRouter      from './routes/quiz.js';
+import reportRouter    from './routes/report.js';
+import paymentRouter   from './routes/payment.js';
+import analyticsRouter from './routes/analytics.js';
 import { errorHandler } from './middleware/errorHandler.js';
 
 const app  = express();
@@ -39,9 +40,10 @@ app.use('/api/', rateLimit({
 }));
 
 // ── Routes ────────────────────────────────────────────────
-app.use('/api/quiz',    quizRouter);
-app.use('/api/report',  reportRouter);
-app.use('/api/payment', paymentRouter);
+app.use('/api/quiz',      quizRouter);
+app.use('/api/report',    reportRouter);
+app.use('/api/payment',   paymentRouter);
+app.use('/api/analytics', analyticsRouter);
 
 app.get('/api/health', (_req, res) => {
   res.json({ status: 'ok', ts: new Date().toISOString() });

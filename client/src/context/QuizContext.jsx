@@ -12,6 +12,7 @@ export function QuizProvider({ children }) {
   const [archetype, setArchetype]       = useState(null);
   const [sessionId, setSessionId]       = useState(null);
   const [userName, setUserName]         = useState('');
+  const [email, setEmail]               = useState('');
   const [completed, setCompleted]       = useState(false);
 
   const totalQuestions = QUESTIONS.length;
@@ -64,6 +65,7 @@ export function QuizProvider({ children }) {
       currentIndex, currentQuestion, totalQuestions, progress,
       answers, scores, archetype, sessionId, setSessionId,
       userName, setUserName,
+      email, setEmail,
       completed,
       answerQuestion, goBack, reset,
     }}>

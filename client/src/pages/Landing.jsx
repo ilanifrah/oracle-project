@@ -50,7 +50,7 @@ export default function Landing() {
             {s.heroSubtitle}
           </p>
           <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <Button variant="gold" size="lg" onClick={() => navigate('/quiz')}>
+            <Button variant="gold" size="lg" onClick={() => navigate('/intake')}>
               {s.heroCtaPrimary}
             </Button>
             <Button variant="secondary" size="lg" onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}>
@@ -134,7 +134,7 @@ export default function Landing() {
       {/* ── Footer CTA ────────────────────────────────────── */}
       <section style={{ padding: '80px 24px 120px', position: 'relative', zIndex: 1, textAlign: 'center' }}>
         <motion.div {...fadeUp()}>
-          <Button variant="gold" size="lg" onClick={() => navigate('/quiz')}>
+          <Button variant="gold" size="lg" onClick={() => navigate('/intake')}>
             {s.startQuiz}
           </Button>
         </motion.div>

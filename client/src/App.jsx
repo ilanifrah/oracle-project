@@ -4,6 +4,7 @@ import { QuizProvider } from './context/QuizContext.jsx';
 
 import LanguageSelect from './pages/LanguageSelect.jsx';
 import Landing        from './pages/Landing.jsx';
+import Intake         from './pages/Intake.jsx';
 import Quiz           from './pages/Quiz.jsx';
 import Results        from './pages/Results.jsx';
 import Report         from './pages/Report.jsx';
@@ -19,6 +20,7 @@ function AppRoutes() {
   return (
     <Routes>
       <Route path="/"                    element={<Landing />} />
+      <Route path="/intake"              element={<Intake />} />
       <Route path="/quiz"                element={<Quiz />} />
       <Route path="/results"             element={<Results />} />
       <Route path="/report/:sessionId"   element={<Report />} />

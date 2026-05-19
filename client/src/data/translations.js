@@ -86,6 +86,17 @@ export const T = {
     downloadReport: 'הורד דוח',
     shareReport: 'שתף',
 
+    // Intake
+    intakeTitle: 'לפני שנתחיל',
+    intakeSubtitle: 'מלא את הפרטים כדי לקבל את תוצאותיך',
+    intakeName: 'שם מלא',
+    intakeNamePlaceholder: 'השם שלך',
+    intakeEmail: 'אימייל',
+    intakeEmailPlaceholder: 'your@email.com',
+    intakeSubmit: 'בואו נתחיל',
+    intakeRequired: 'שדה זה נדרש',
+    intakeEmailInvalid: 'אנא הזן כתובת אימייל תקינה',
+
     // Errors / misc
     errorGeneric: 'משהו השתבש. נסה שנית.',
     loading: 'טוען...',
@@ -181,6 +192,17 @@ export const T = {
     reportRetry: 'Try Again',
     downloadReport: 'Download Report',
     shareReport: 'Share',
+
+    // Intake
+    intakeTitle: 'Before We Begin',
+    intakeSubtitle: 'Fill in your details to receive your results',
+    intakeName: 'Full Name',
+    intakeNamePlaceholder: 'Your name',
+    intakeEmail: 'Email',
+    intakeEmailPlaceholder: 'your@email.com',
+    intakeSubmit: "Let's Begin",
+    intakeRequired: 'This field is required',
+    intakeEmailInvalid: 'Please enter a valid email address',
 
     // Errors / misc
     errorGeneric: 'Something went wrong. Please try again.',
