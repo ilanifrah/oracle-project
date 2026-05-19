@@ -5,6 +5,7 @@ import { useLanguage } from '../context/LanguageContext.jsx';
 import { useQuiz } from '../context/QuizContext.jsx';
 import { T } from '../data/translations.js';
 import { ARCHETYPES } from '../data/archetypes.js';
+import { questions as QUESTIONS } from '../data/questions.js';
 import ParticleField from '../components/ParticleField.jsx';
 import Button from '../components/ui/Button.jsx';
 import Card from '../components/ui/Card.jsx';
@@ -16,7 +17,7 @@ const HE_SCORE_LABELS = {
   connector: 'המחבר', hunter: 'הצייד',
 };
 
-function fireAnalytics({ archetypeKey, scores, language }) {
+function fireAnalytics({ archetypeKey, scores, language, answers }) {
   try {
     const now = new Date();
     const pad = n => String(n).padStart(2, '0');
@@ -34,6 +35,17 @@ function fireAnalytics({ archetypeKey, scores, language }) {
       Object.entries(scores).map(([k, v]) => [HE_SCORE_LABELS[k] ?? k, v])
     );
 
+    const answerLabels = {};
+    if (answers) {
+      for (const [qId, type] of Object.entries(answers)) {
+        const q = QUESTIONS.find(q => q.id === parseInt(qId, 10));
+        if (q) {
+          const opt = q.he.options.find(o => o.type === type);
+          if (opt) answerLabels[qId] = opt.label;
+        }
+      }
+    }
+
     fetch(ANALYTICS_URL, {
       method: 'POST',
       mode: 'no-cors',
@@ -45,6 +57,7 @@ function fireAnalytics({ archetypeKey, scores, language }) {
         scores: heScores,
         language: language === 'he' ? 'עברית' : 'English',
         completionMinutes,
+        answers: answerLabels,
       }),
     }).catch(() => {});
   } catch (_) {}
@@ -62,7 +75,7 @@ export default function Results() {
   const navigate = useNavigate();
   const [params] = useSearchParams();
   const { language } = useLanguage();
-  const { archetype, sessionId, scores, userName } = useQuiz();
+  const { archetype, sessionId, scores, userName, answers } = useQuiz();
   const s = T[language];
 
   const [revealed, setRevealed]     = useState(false);
@@ -75,7 +88,7 @@ export default function Results() {
   }, []);
 
   useEffect(() => {
-    if (archetypeKey) fireAnalytics({ archetypeKey, scores, language });
+    if (archetypeKey) fireAnalytics({ archetypeKey, scores, language, answers });
   }, []);
 
   const archetypeKey  = archetype;
