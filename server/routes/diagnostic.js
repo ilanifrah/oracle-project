@@ -63,7 +63,7 @@ ${questionCount >= 20 ? 'ניתן להסיק מסקנה אם הביטחון גב
 `;
 
     const response = await client.messages.create({
-      model: 'claude-sonnet-4-20250514',
+      model: 'claude-sonnet-4-5',
       max_tokens: 1024,
       system: DIAGNOSTIC_SYSTEM_PROMPT,
       messages: [{ role: 'user', content: userMessage }]
@@ -108,7 +108,7 @@ ${answers.map((a, i) => `${i+1}. ש: ${a.question}\nת: ${a.answer}`).join('\n\n
 `;
 
     const response = await client.messages.create({
-      model: 'claude-sonnet-4-20250514',
+      model: 'claude-sonnet-4-5',
       max_tokens: 2000,
       messages: [{ role: 'user', content: prompt }]
     });

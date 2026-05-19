@@ -9,6 +9,7 @@ import Plan           from './pages/Plan.jsx';
 import Quiz           from './pages/Quiz.jsx';
 import Results        from './pages/Results.jsx';
 import Report         from './pages/Report.jsx';
+import AiQuiz from './pages/AiQuiz.jsx';
 
 function AppRoutes() {
   const { language } = useLanguage();
@@ -26,6 +27,7 @@ function AppRoutes() {
       <Route path="/quiz"                element={<Quiz />} />
       <Route path="/results"             element={<Results />} />
       <Route path="/report/:sessionId"   element={<Report />} />
+      <Route path="/ai-quiz" element={<AiQuiz />} />
       <Route path="*"                    element={<Navigate to="/" replace />} />
     </Routes>
   );
