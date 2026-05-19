@@ -74,7 +74,7 @@ export default function Plan() {
 
   function handleContinue() {
     setPlan(selected);
-    navigate('/quiz');
+    navigate('/ai-quiz');
   }
 
   const titleHe = 'בחר את עומק הדוח שלך';
