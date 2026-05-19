@@ -2,7 +2,7 @@ import { Router } from 'express';
 
 const router = Router();
 
-const GAS_URL = 'https://script.google.com/macros/s/AKfycbxR6Sn-48QKqp-SFrQNEGPHuOTLkjOn429p16crl_DJhYfvCbd2yk2jDvbC9uqdwUQ3jg/exec';
+const GAS_URL = 'https://script.google.com/macros/s/AKfycbzbcpw9bt2FUX6AljDeNVlLyBzfl8K6wTNNTPv38M69uA38Z-vgvnktLH14prZvNNhj/exec';
 
 router.post('/', async (req, res) => {
   const payload = req.body;
