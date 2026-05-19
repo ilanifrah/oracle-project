@@ -341,6 +341,73 @@ export default function Results() {
               )}
             </motion.div>
 
+            {/* ── Upgrade prompt ──────────────────────────── */}
+            {plan && plan !== 'premium' && (
+              <motion.div
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.65 }}
+                style={{ marginTop: '32px' }}
+              >
+                <div style={{
+                  borderRadius: '16px',
+                  background: 'linear-gradient(135deg, rgba(245,158,11,0.05) 0%, rgba(139,92,246,0.07) 100%)',
+                  border: '1px solid rgba(245,158,11,0.28)',
+                  padding: '24px 28px',
+                  direction: 'rtl',
+                  textAlign: 'right',
+                  position: 'relative',
+                  overflow: 'hidden',
+                }}>
+                  {/* Background glow */}
+                  <div style={{
+                    position: 'absolute', top: '-24px', right: '-24px',
+                    width: '130px', height: '130px', borderRadius: '50%',
+                    background: 'radial-gradient(circle, rgba(245,158,11,0.1) 0%, transparent 70%)',
+                    pointerEvents: 'none',
+                  }} />
+
+                  <p style={{
+                    color: 'var(--gold-400)',
+                    fontSize: '0.68rem',
+                    letterSpacing: '0.18em',
+                    textTransform: 'uppercase',
+                    marginBottom: '10px',
+                  }}>
+                    {plan === 'basic' ? 'שדרג לפלאן מתקדם' : 'שדרג לפרימיום'}
+                  </p>
+
+                  <p style={{
+                    color: 'var(--text-primary)',
+                    fontSize: '1rem',
+                    fontFamily: 'var(--font-he)',
+                    fontWeight: 600,
+                    lineHeight: 1.55,
+                    marginBottom: '8px',
+                  }}>
+                    {plan === 'basic'
+                      ? 'שדרג למתקדם — שלם רק $7 נוספים וקבל דוח מעמיק מלא'
+                      : 'שדרג לפרימיום — שלם רק $17 נוספים וקבל ניתוח פסיכולוגי עמוק + תכנית 30 יום'}
+                  </p>
+
+                  <p style={{
+                    color: 'var(--text-muted)',
+                    fontSize: '0.84rem',
+                    lineHeight: 1.6,
+                    marginBottom: '20px',
+                  }}>
+                    {plan === 'basic'
+                      ? '7 נתיבי הכנסה עם הסברים · ניתוח כוחות וחסמים · 3 צעדי פעולה קונקרטיים'
+                      : 'ניתוח צל / IFS / סומטי · תוכנית אישית 30 יום · כל הנתיבים מדורגים · המלצות כלים'}
+                  </p>
+
+                  <Button variant="gold" size="md" onClick={() => navigate('/plan')}>
+                    שדרג עכשיו ✦
+                  </Button>
+                </div>
+              </motion.div>
+            )}
+
           </motion.div>
         )}
       </div>
