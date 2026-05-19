@@ -35,7 +35,7 @@ export default function Intake() {
     if (Object.keys(errs).length) { setErrors(errs); return; }
     setUserName(name.trim());
     setEmail(emailVal.trim());
-    navigate('/quiz');
+    navigate('/plan');
   }
 
   function inputStyle(hasError) {

@@ -17,7 +17,7 @@ const HE_SCORE_LABELS = {
   connector: 'המחבר', hunter: 'הצייד',
 };
 
-function fireAnalytics({ archetypeKey, scores, language, answers, name, email }) {
+function fireAnalytics({ archetypeKey, scores, language, answers, name, email, plan }) {
   try {
     const now = new Date();
     const pad = n => String(n).padStart(2, '0');
@@ -54,6 +54,7 @@ function fireAnalytics({ archetypeKey, scores, language, answers, name, email })
         time,
         name:   name || null,
         email:  email || null,
+        plan:   plan || null,
         archetype: archetypeName,
         scores: heScores,
         language: language === 'he' ? 'עברית' : 'English',
@@ -76,7 +77,7 @@ export default function Results() {
   const navigate = useNavigate();
   const [params] = useSearchParams();
   const { language } = useLanguage();
-  const { archetype, sessionId, scores, userName, email, answers } = useQuiz();
+  const { archetype, sessionId, scores, userName, email, answers, plan } = useQuiz();
   const s = T[language];
 
   const [revealed, setRevealed]     = useState(false);
@@ -89,7 +90,7 @@ export default function Results() {
   }, []);
 
   useEffect(() => {
-    if (archetypeKey) fireAnalytics({ archetypeKey, scores, language, answers, name: userName, email });
+    if (archetypeKey) fireAnalytics({ archetypeKey, scores, language, answers, name: userName, email, plan });
   }, []);
 
   const archetypeKey  = archetype;
@@ -118,6 +119,7 @@ export default function Results() {
           archetypeKey,
           scores,
           language,
+          plan:      plan || 'advanced',
           name:      userName || null,
           sessionId: sid || null,
         }),

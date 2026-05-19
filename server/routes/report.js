@@ -28,7 +28,7 @@ router.get('/:sessionId', async (req, res, next) => {
 // POST /api/report/free-generate
 router.post('/free-generate', async (req, res, next) => {
   try {
-    const { sessionId, archetypeKey, scores, name } = req.body;
+    const { sessionId, archetypeKey, scores, name, plan } = req.body;
 
     if (!archetypeKey) {
       return res.status(400).json({ error: 'archetypeKey is required' });
@@ -42,9 +42,10 @@ router.post('/free-generate', async (req, res, next) => {
 
     console.log(`[free-generate] archetype=${archetypeKey} session=${sessionId || 'none'}`);
 
-    // Always generate in Hebrew masculine
+    const resolvedPlan = ['basic', 'advanced', 'premium'].includes(plan) ? plan : 'advanced';
+
     const content = await generateReport({
-      plan:     'premium',
+      plan:     resolvedPlan,
       archetype,
       scores:   scores || {},
       language: 'he',
@@ -57,7 +58,7 @@ router.post('/free-generate', async (req, res, next) => {
     if (sessionId) {
       supabase.from('reports').insert({
         session_id: sessionId,
-        plan:       'premium',
+        plan:       resolvedPlan,
         content,
         paid:       true,
       }).then(({ error }) => {
